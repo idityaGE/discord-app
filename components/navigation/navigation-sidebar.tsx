@@ -12,7 +12,7 @@ import { dark } from '@clerk/themes';
 const NavigationSidebar = async () => {
   const profile = await currentProfile()
   if (!profile) {
-    redirect('/sign-in');
+    return redirect('/sign-in');
   }
 
   const servers = await prisma.server.findMany({
