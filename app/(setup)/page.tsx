@@ -6,6 +6,7 @@ import { InitialModal } from "@/components/models/initial-modal";
 
 const SetupPage = async () => {
   const profile = await initialProfile();
+  
   const server = await prisma.server.findFirst({
     where: {
       members: {
@@ -16,15 +17,9 @@ const SetupPage = async () => {
     }
   })
 
-  if(server){
-    return redirect(`/servers/${server.id}`)
-  }
+  if (server) return redirect(`/servers/${server.id}`)
 
-  return (
-    <div className="h-full">
-      <InitialModal/>
-    </div>
-  );
+  return <InitialModal />
 }
 
 export default SetupPage;
