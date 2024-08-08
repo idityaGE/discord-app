@@ -14,6 +14,7 @@ const NavigationSidebar = async () => {
   
   if (!profile) return redirect('/');
 
+
   const servers = await prisma.server.findMany({
     where: {
       members: {
