@@ -53,6 +53,7 @@ export const CreateServerModel = () => {
       await axios.post('/api/servers', values)
       form.reset()
       router.refresh()
+      onClose()
     } catch (error) {
       console.error(error)
     }
