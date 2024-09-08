@@ -2,6 +2,7 @@
 
 import { CreateServerModel } from "@/components/models/create-server-modal"
 import { useEffect, useState } from "react"
+import { InviteModel } from "../models/invite-model"
 
 export const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -17,6 +18,7 @@ export const ModelProvider = () => {
   return (
     <>
       <CreateServerModel />
+      <InviteModel />
     </>
   )
 }
