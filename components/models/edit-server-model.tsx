@@ -21,24 +21,23 @@ import { Button } from '@/components/ui/button'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState } from 'react'
 import { FileUpload } from '@/components/file-upload'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { useModel } from '@/hooks/use-model-store'
+import { useEffect } from 'react'
 
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   imageUrl: z.string().url('Invalid URL').min(1, 'Server image is required'),
 })
 
-export const InitialModal = () => {
+export const EditServerModel = () => {
+  const { isOpen, type, onClose, data } = useModel()
   const router = useRouter()
-  // To fix hydration error
-  const [isMounted, setIsMounted] = useState(false)
+  const { server } = data
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const isModelOpen = isOpen && type === "editServer"
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -48,24 +47,33 @@ export const InitialModal = () => {
     },
   })
 
+  useEffect(() => {
+    if (server) {
+      form.setValue('name', server.name)
+      form.setValue('imageUrl', server.imageUrl)
+    }
+  }, [server, form])
+
   const isLoading = form.formState.isSubmitting
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post('/api/servers', values)
+      await axios.patch(`/api/servers/${server?.id}`, values)
       form.reset()
       router.refresh()
-      window.location.reload()
+      onClose()
     } catch (error) {
       console.error(error)
     }
   }
 
-  // To fix hydration error
-  if(!isMounted) return null
+  const handleClose = () => {
+    form.reset()
+    onClose()
+  }
 
   return (
-    <Dialog open>
+    <Dialog open={isModelOpen} onOpenChange={handleClose} >
       <DialogContent className='bg-white text-black p-0 overflow-hidden'>
         <DialogHeader className='pt-8 px-6'>
           <DialogTitle className='text-2xl text-center font-bold'>
@@ -79,16 +87,16 @@ export const InitialModal = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
             <div className='space-y-8 px-6'>
               <div className='flex items-center justify-center text-center'>
-                <FormField 
+                <FormField
                   control={form.control}
                   name='imageUrl'
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <FileUpload
-                          endPoint= "serverImage"
+                          endPoint="serverImage"
                           value={field.value}
-                          onChange= {field.onChange}
+                          onChange={field.onChange}
                         />
                       </FormControl>
                       <FormMessage>{form.formState.errors.imageUrl?.message}</FormMessage>
@@ -123,7 +131,7 @@ export const InitialModal = () => {
                 variant='primary'
                 disabled={isLoading}
               >
-                Create server
+                Save
               </Button>
             </DialogFooter>
           </form>
