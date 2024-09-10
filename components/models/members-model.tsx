@@ -134,7 +134,7 @@ export const MembersModel = () => {
                       </DropdownMenuSub>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
-
+                        onClick={() => onKick(member.id)}
                         className='text-rose-500'
                       >
                         <Gavel className='h-4 w-4 mr-2' />
