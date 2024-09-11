@@ -70,6 +70,7 @@ export const InviteModel = () => {
               disabled={isLoading}
               size='icon'
               onClick={copy}
+              className='bg-zinc-300/50 text-zinc-500 dark:text-secondary/70 hover:bg-zinc-300/70'
             >
               {copied ? <CheckCheck className='w-4 h-4' /> : <Copy className='w-4 h-4' />}
             </Button>

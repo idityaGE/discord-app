@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { InviteModel } from "../models/invite-model"
 import { EditServerModel } from "../models/edit-server-model"
 import { MembersModel } from "../models/members-model"
+import { CreateChannelModel } from "../models/create-channel-modal"
 
 export const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -23,6 +24,7 @@ export const ModelProvider = () => {
       <InviteModel />
       <EditServerModel />
       <MembersModel />
+      <CreateChannelModel />
     </>
   )
 }
