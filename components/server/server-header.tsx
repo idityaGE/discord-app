@@ -42,7 +42,7 @@ const ServerHeader = ({
           className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]"
         >
           {isModerator && (
-            <DropdownMenuItem 
+            <DropdownMenuItem
               onClick={() => onOpen("invite", { server })}
               className="text-indigo-600 dark:text-indigo-400 px-3 py-2 text-sm cursor-pointer">
               Invite People
@@ -50,7 +50,7 @@ const ServerHeader = ({
             </DropdownMenuItem>
           )}
           {isAdmin && (
-            <DropdownMenuItem 
+            <DropdownMenuItem
               onClick={() => onOpen("editServer", { server })}
               className="px-3 py-2 text-sm cursor-pointer">
               Server Setting
@@ -58,7 +58,7 @@ const ServerHeader = ({
             </DropdownMenuItem>
           )}
           {isAdmin && (
-            <DropdownMenuItem 
+            <DropdownMenuItem
               onClick={() => onOpen("members", { server })}
               className="px-3 py-2 text-sm cursor-pointer">
               Manage Members
@@ -66,7 +66,7 @@ const ServerHeader = ({
             </DropdownMenuItem>
           )}
           {isModerator && (
-            <DropdownMenuItem 
+            <DropdownMenuItem
               onClick={() => onOpen("createChannel")}
               className="px-3 py-2 text-sm cursor-pointer">
               Create Channel
@@ -74,7 +74,7 @@ const ServerHeader = ({
             </DropdownMenuItem>
           )}
           {isModerator && (
-            <DropdownMenuSeparator/>
+            <DropdownMenuSeparator />
           )}
           {isAdmin && (
             <DropdownMenuItem className="text-rose-500 px-3 py-2 text-sm cursor-pointer">
@@ -83,7 +83,9 @@ const ServerHeader = ({
             </DropdownMenuItem>
           )}
           {!isAdmin && (
-            <DropdownMenuItem className="text-rose-500 px-3 py-2 text-sm cursor-pointer">
+            <DropdownMenuItem
+              onClick={() => onOpen("leaveServer", { server })}
+              className="text-rose-500 px-3 py-2 text-sm cursor-pointer">
               Leave Server
               <LogOut className="h-4 w-4 ml-auto text-rose-500" />
             </DropdownMenuItem>
