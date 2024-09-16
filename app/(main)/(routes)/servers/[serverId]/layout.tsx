@@ -3,7 +3,7 @@ import prisma from "@/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs/server";
 import React from "react";
 import { redirect } from "next/navigation";
-import ServerSidebar from "@/components/server/server-siderbar";
+import ServerSidebar from "@/components/server/server-sidebar";
 
 const ServerIdLayout = async ({
   children,
