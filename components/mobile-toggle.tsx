@@ -21,7 +21,7 @@ export const MobileToggle = ({ serverId }: { serverId: string }) => {
         </div>
         <ServerSidebar serverId={serverId} />
       </SheetContent>
-      
+
     </Sheet>
   );
 };

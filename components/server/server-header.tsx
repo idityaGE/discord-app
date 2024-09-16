@@ -35,7 +35,7 @@ const ServerHeader = ({
             dark:hover:bg-zinc-700/50 transition"
           >
             {server.name}
-            <ChevronDown className="h-5 w-5 ml-auto" />
+            <ChevronDown className="h-5 w-5 md:ml-auto" />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
