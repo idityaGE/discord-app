@@ -1,6 +1,6 @@
 import ChatHeader from "@/components/chat/chat-header"
 import { ChatInput } from "@/components/chat/chat-input"
-import { currentProfile } from "@/lib/currect-profile"
+import { currentProfile } from "@/lib/current-profile"
 import prisma from "@/lib/db"
 import { redirectToSignIn } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"

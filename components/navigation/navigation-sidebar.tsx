@@ -1,4 +1,4 @@
-import { currentProfile } from "@/lib/currect-profile";
+import { currentProfile } from "@/lib/current-profile";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/db";
 import NavigationAction from "@/components/navigation/navigation-action";

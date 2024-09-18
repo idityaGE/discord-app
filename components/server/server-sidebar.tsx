@@ -2,7 +2,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 
 import prisma from "@/lib/db";
-import { currentProfile } from "@/lib/currect-profile";
+import { currentProfile } from "@/lib/current-profile";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { redirect } from "next/navigation";
 

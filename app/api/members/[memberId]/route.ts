@@ -1,4 +1,4 @@
-import { currentProfile } from "@/lib/currect-profile";
+import { currentProfile } from "@/lib/current-profile";
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 
