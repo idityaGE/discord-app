@@ -94,7 +94,6 @@ export const CreateChannelModel = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
             <div className='space-y-8 px-6'>
-
               <FormField
                 control={form.control}
                 name='name'
@@ -119,7 +118,7 @@ export const CreateChannelModel = () => {
                 name='type'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
                       Channel type
                     </FormLabel>
                     <Select

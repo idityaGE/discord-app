@@ -121,7 +121,7 @@ export const EditChannelModel = () => {
                 name='type'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
                       Channel type
                     </FormLabel>
                     <Select
