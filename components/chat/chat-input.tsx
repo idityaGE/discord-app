@@ -12,7 +12,7 @@ import * as z from "zod";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { useModal } from "@/hooks/use-modal-store";
+import { useModel } from "@/hooks/use-model-store";
 // import { EmojiPicker } from "../emoji-picker";
 
 type ChatInputProps = {
@@ -27,7 +27,7 @@ const formSchema = z.object({
 });
 
 export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
-  // const { onOpen } = useModal();
+  const { onOpen } = useModel();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,7 +67,7 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                 <div className="relative p-4 pb-6">
                   <button
                     type="button"
-                    // onClick={() => onOpen("messageFile", { apiUrl, query })}
+                    onClick={() => onOpen("messageFile", { apiUrl, query })}
                     className="absolute top-7 left-8 h-[24px] w-[24px] bg-zinc-500 dark:bg-zinc-400 hover:bg-zinc-600 dark:hover:bg-zinc-300 transition rounded-full p-1 flex items-center justify-center"
                     title="Add a file"
                   >

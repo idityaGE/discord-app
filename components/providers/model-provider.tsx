@@ -11,6 +11,7 @@ import { LeaveServerModel } from "@/components/models/leave-server-model"
 import { DeleteServerModel } from "../models/delete-server-model"
 import { DeleteChannelModel } from "../models/delete-channel-model"
 import { EditChannelModel } from "../models/edit-channel-modal"
+import { MessgaeFileModal } from "../models/message-file-model"
 
 export const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -34,6 +35,7 @@ export const ModelProvider = () => {
       <DeleteServerModel />
       <DeleteChannelModel />
       <EditChannelModel />
+      <MessgaeFileModal />
     </>
   )
 }
