@@ -9,6 +9,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import { ModelProvider } from "@/components/providers/model-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -38,7 +39,9 @@ export default function RootLayout({
           >
             <SocketProvider>
               <ModelProvider />
-              {children}
+              <QueryProvider>
+                {children}
+              </QueryProvider>
             </SocketProvider>
           </ThemeProvider>
         </body>
