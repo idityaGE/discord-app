@@ -44,7 +44,7 @@ export const DeleteServerModel = () => {
             Delete Server
           </DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete <span className='font-semibold text-indigo-500'>{server?.name}</span> server ?
+            Are you sure you want to delete <span className='font-semibold text-rose-500'>{server?.name}</span> server ?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className='bg-gray-100 px-6 py-6'>
@@ -61,7 +61,7 @@ export const DeleteServerModel = () => {
             <Button
               disabled={isLoading}
               onClick={onClick}
-              variant="primary"
+              variant="destructive"
             >
               Delete Server
             </Button>

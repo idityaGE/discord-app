@@ -1,23 +1,25 @@
+import { NextResponse, type NextRequest } from "next/server";
+
 import { currentProfile } from "@/lib/current-profile";
+import type { Message } from "@prisma/client";
 import prisma from "@/lib/db";
-import { Message } from "@prisma/client";
-import { NextResponse } from "next/server";
 
 const MESSAGES_BATCH = 10;
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
-    const profile = await currentProfile()
-    if (!profile) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
+    const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
+
     const cursor = searchParams.get("cursor");
     const channelId = searchParams.get("channelId");
-    if (!channelId) {
-      return new NextResponse("Channel Id is missing", { status: 400 });
-    }
-    let messages: Message[] = []
+
+    if (!profile) return new NextResponse("Unauthorized.", { status: 401 });
+    if (!channelId)
+      return new NextResponse("Channel ID is missing.", { status: 401 });
+
+    let messages: Message[] = [];
+
     if (cursor) {
       messages = await prisma.message.findMany({
         take: MESSAGES_BATCH,
@@ -32,13 +34,13 @@ export async function GET(req: Request) {
           member: {
             include: {
               profile: true,
-            }
-          }
+            },
+          },
         },
         orderBy: {
           createdAt: "desc",
-        }
-      })
+        },
+      });
     } else {
       messages = await prisma.message.findMany({
         take: MESSAGES_BATCH,
@@ -49,24 +51,26 @@ export async function GET(req: Request) {
           member: {
             include: {
               profile: true,
-            }
-          }
+            },
+          },
         },
         orderBy: {
           createdAt: "desc",
-        }
-      })
+        },
+      });
     }
+
     let nextCursor = null;
-    if (messages.length === MESSAGES_BATCH) {
-      nextCursor = messages[messages.length - 1].id;
-    }
+
+    if (messages.length === MESSAGES_BATCH)
+      nextCursor = messages[MESSAGES_BATCH - 1].id;
+
     return NextResponse.json({
-      item: messages,
+      items: messages,
       nextCursor,
-    })
-  } catch (error) {
-    console.error("[MESSAGES_GET_ERROR] GET", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
+    });
+  } catch (error: unknown) {
+    console.error("[MESSAGES_GET]: ", error);
+    return new NextResponse("Internal Server Error.", { status: 500 });
   }
 }
