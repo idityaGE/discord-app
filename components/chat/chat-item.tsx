@@ -65,7 +65,6 @@ export const ChatItem = ({
 
   const onMemberClick = () => {
     if (member.id === currentMember.id) return;
-
     router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
   };
 
@@ -81,13 +80,10 @@ export const ChatItem = ({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.keyCode === 27) {
-        console.log("Escape");
         setIsEditing(false);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
-
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
@@ -111,9 +107,7 @@ export const ChatItem = ({
         url: `${socketUrl}/${id}`,
         query: socketQuery,
       });
-
       await axios.patch(url, values);
-
       form.reset();
       setIsEditing(false);
     } catch (error: unknown) {
@@ -174,7 +168,7 @@ export const ChatItem = ({
           )}
 
           {isPDF && (
-            <div className="relative flex items-center p-2 mt-2 rounded-md bg-zinc-100 dark:bg-zinc-900">
+            <div className="relative flex items-center p-2 mt-2 rounded-md bg-zinc-100 dark:bg-zinc-700">
               <FileIcon className="h-10 w-10 fill-indigo-200 stroke-indigo-400" />
               <a
                 href={fileUrl}
@@ -182,7 +176,7 @@ export const ChatItem = ({
                 rel="noreferrer noopener"
                 className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline"
               >
-                PDF File
+                PDF File (click to view)
               </a>
             </div>
           )}
@@ -261,13 +255,13 @@ export const ChatItem = ({
 
           <ActionTooltip label="Delete">
             <Trash
-              // onClick={() =>
-              //   onOpen("deleteMessage", {
-              //     apiUrl: `${socketUrl}/${id}`,
-              //     query: socketQuery,
-              //   })
-              // }
-              className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"
+              onClick={() =>
+                onOpen("deleteMessage", {
+                  apiUrl: `${socketUrl}/${id}`,
+                  query: socketQuery,
+                })
+              }
+              className="cursor-pointer ml-auto w-4 h-4 text-rose-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"
             />
           </ActionTooltip>
         </div>
