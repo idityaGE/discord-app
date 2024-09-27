@@ -122,17 +122,16 @@ discord-app/
     |-- io.ts
   |- prisma/
     |-- schema.prisma
-  |- public/
-    |-- github.png
-    |-- logo.png
   |- .env
   |- .env.example
   |- .eslintrc.js
   |- .gitignore
   |- .prettierrc.json
+  |- LICENSE
+  |- README.md
+  |- CONTRIBUTING.md
+  |- CODE_OF_CONDUCT.md
   |- components.json
-  |- constants.ts
-  |- drizzle.config.ts
   |- environment.d.ts
   |- middleware.ts
   |- next.config.mjs
@@ -155,88 +154,63 @@ discord-app/
 ```env
 # .env
 
-# disabled next.js telemetry
-NEXT_TELEMETRY_DISABLED=1
+# Database URL
+DATABASE_URL=
 
-# clerk auth keys
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-CLERK_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# UploadThing API
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
 
-# clerk redirect urls
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+# Clerk API
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 
-# neon databse url
-DATABASE_URL="postgresql://<user>:<password>@<host>:<post>/discord-app?sslmode=require"
-
-# uploading api key and app id
-UPLOADTHING_SECRET=sk_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-UPLOADTHING_APP_ID=xxxxxxxxxxxxx
-
-# app base url
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
-# livekit api keys and public url
-LIVEKIT_API_KEY=XXXXXXXXXXXXXXXXX
-LIVEKIT_API_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-NEXT_PUBLIC_LIVEKIT_URL=wss://discord-app-xxxxxxxxxx.livekit.cloud
-
+# LiveKit API
+LIVEKIT_API_KEY=
+LIVEKIT_API_SECRET=
+NEXT_PUBLIC_LIVEKIT_URL=
 ```
 
-5. **Next.js Telemetry Disabled:**
-
-   - Visit the Next.js documentation or repository.
-   - Find the instructions to disable telemetry.
-   - Set `NEXT_TELEMETRY_DISABLED` to `1` in your `.env` file.
-
-6. **Clerk Authentication Keys:**
+5. **Clerk Authentication Keys:**
 
    - Go to the Clerk website and sign in to your account.
    - Navigate to the settings or API keys section.
    - Generate or locate your Clerk publishable and secret keys.
    - Set `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` accordingly in the `.env` file.
 
-7. **Clerk Redirect URLs:**
+6. **Clerk Redirect URLs:**
 
    - Refer to the Clerk documentation or settings.
    - Set the required URLs for sign-in, sign-up, after sign-in, and after sign-up.
    - Assign these URLs to `NEXT_PUBLIC_CLERK_SIGN_IN_URL`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL`, `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`, and `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` respectively in the `.env` file.
 
-8. **Neon Database URL:**
+7. **Neon Database URL:**
 
    - Access your database provider (e.g., PostgreSQL).
    - Retrieve the necessary connection details such as username, password, host, and port.
    - Construct the database URL using the obtained information and SSL mode.
    - Assign the constructed URL to `DATABASE_URL` in the `.env` file.
 
-9. **Uploading API Key and App ID:**
+8. **Uploading API Key and App ID:**
 
    - Go to the UploadThing website or application.
    - Find the section for API keys or account settings.
    - Generate or locate your secret key and app ID.
    - Set `UPLOADTHING_SECRET` and `UPLOADTHING_APP_ID` in the `.env` file accordingly.
 
-10. **App Base URL:**
 
-- Determine the base URL of your application.
-- Set `NEXT_PUBLIC_BASE_URL` to the base URL in the `.env` file.
-
-11. **Livekit API Keys and Public URL:**
+9. **Livekit API Keys and Public URL:**
 
 - Visit the Livekit website or dashboard.
 - Navigate to API settings or keys section.
 - Generate or locate your API key and secret.
 - Set `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, and `NEXT_PUBLIC_LIVEKIT_URL` in the `.env` file according to the obtained information.
 
-12. Save and Secure:
+10. Save and Secure:
 
-    - Save the changes to the `.env.local` file.
+    - Save the changes to the `.env` file.
 
-13. Install Project Dependencies using `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
-
-14. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
+11. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
@@ -321,13 +295,11 @@ Useful resources and dependencies that are used in Discord Clone.
 
 ## :coffee: Buy Me a Coffee
 
-[<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="200" />](https://www.buymeacoffee.com/sanidhy "Buy me a Coffee")
+[<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="200" />](https://www.buymeacoffee.com/idityage "Buy me a Coffee")
 
 ## :rocket: Follow Me
 
 [![Follow Me](https://img.shields.io/github/followers/idityage?style=social&label=Follow&maxAge=2592000)](https://github.com/idityage "Follow Me")
-[![Tweet about this project](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FTechnicalShubam)](https://twitter.com/intent/tweet?text=Check+out+this+amazing+app:&url=https%3A%2F%2Fgithub.com%2Fidityage%2Fdiscord-app "Tweet about this project")
-[![Subscribe to my YouTube Channel](https://img.shields.io/youtube/channel/subscribers/UCNAz_hUVBG2ZUN8TVm0bmYw)](https://www.youtube.com/@OPGAMER./?sub_confirmation=1 "Subscribe to my YouTube Channel")
 
 ## :books: Learn More
 
@@ -337,12 +309,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## :page_with_curl: Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## :page_with_curl: Deploy on Railway
 
